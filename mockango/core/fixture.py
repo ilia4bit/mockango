@@ -3,7 +3,9 @@ import json
 import yaml
 from datetime import datetime
 from mimesis.schema import Schema, Field
+from mimesis.exceptions import UnsupportedField
 from colorama import Fore
+from .generators import BaseGenerator, NumberGenerator, StringGenerator
 
 
 class Fixture:
@@ -20,12 +22,19 @@ class Fixture:
         self.model_fixture_dir_path = os.path.join(os.path.join(self.app_path, 'fixtures'), self.model_name)
 
     def field_provider_identifier(self, field):
-        _ = Field(locale=self.locale)
-        return _('text.word')
+        try:
+            return BaseGenerator(field=field, locale=self.locale).generate()
+        except UnsupportedField:
+            if field.get_internal_type() in NumberGenerator.ALL_VALID_FIELDS:
+                return NumberGenerator(field=field, locale=self.locale).generate()
+            elif field.get_internal_type() in StringGenerator.ALL_VALID_FIELDS:
+                return StringGenerator(field=field, locale=self.locale).generate()
 
     def generate_objects(self):
         _ = Field(locale=self.locale)
-        object_desc = (lambda: {'model': self.model_label, 'pk': self.field_provider_identifier(''), 'fields': {field.name: self.field_provider_identifier(field) for field in self.model_fields if field.name != 'id'}})
+        object_desc = (lambda: {'model': self.model_label, 'pk': '',
+                                'fields': {field.name: self.field_provider_identifier(field) for field in
+                                           self.model_fields if field.name != 'id'}})
         schema = Schema(schema=object_desc)
         objects = schema.create(iterations=self.num)
         return objects
@@ -41,7 +50,8 @@ class Fixture:
 
     def create_fixture_file(self):
         objects = self.generate_objects()
-        fixture_file_name = '{}_mock_{}.{}'.format(self.model_name, datetime.now().strftime('%X').replace(':', '_'), self.fixture_format)
+        fixture_file_name = '{}_mock_{}.{}'.format(self.model_name, datetime.now().strftime('%X').replace(':', '_'),
+                                                   self.fixture_format)
         try:
             with open(os.path.join(self.model_fixture_dir_path, fixture_file_name), mode='w') as ff:
                 if self.fixture_format == 'yaml':
