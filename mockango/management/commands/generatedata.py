@@ -11,7 +11,7 @@ class Command(AppCommand):
     def add_arguments(self, parser):
         parser.add_argument('args', metavar='app_label', nargs='+', help='One or more application label.')
         parser.add_argument('--num', type=int, default=10, choices=list(range(1, 60)), help='number of instances generate for each model')
-        parser.add_argument('--format', type=str, default='json', choices=['json', 'yaml'], help='fixture file format')
+        parser.add_argument('--format', type=str, default='yaml', choices=['yaml'], help='fixture file format')
         parser.add_argument('--locale', type=str, default='en', choices=LIST_OF_LOCALES,
                             help='locale to generate data in your native language')
 
@@ -28,5 +28,5 @@ class Command(AppCommand):
         for model in app_config.get_models():
             fixture = Fixture(model=model, num=options['num'], fixture_format=options['format'],
                               locale=options['locale'])
-            self.stdout.write(fixture.create_fixtures_dir())
-            self.stdout.write(fixture.create_fixture_file())
+            self.stdout.write(fixture.create_model_fixture_dir())
+            self.stdout.write(fixture.create_model_fixture_file())
