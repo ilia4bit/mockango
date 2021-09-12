@@ -18,10 +18,6 @@ INSTALLED_APPS = [
 ]
 ```
 ## usage
-```shell
-python manage.py generatedata <app_labels> --num <instance for each model> --format <fixture_file_format> --locale <mimesis supported locale>
-```
-## usage
 ```app_labels```(positional):  labels of app you need fixture data for them
 
 ```--num```(optional)(default=10): number of object generate for each model
