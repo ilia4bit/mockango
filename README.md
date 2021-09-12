@@ -15,7 +15,13 @@ pip intall mockango
 ```shell
 python manage.py generatedata <app_labels> --num <instance for each model> --format <fixture_file_format> --locale <mimesis supported locale>
 ```
-### example
+### examples
 ```shell
 python manage.py generatedata posts --num 5 --format yaml
+```
+```shell
+python manage.py generatedata posts accounts
+```
+```shell
+python manage.py generatedata posts --locale fa
 ```
