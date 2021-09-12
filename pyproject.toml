@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "mockango"
-version = "0.1.0"
+version = "1.0.0"
 description = "django-admin fixture generator command"
 authors = ["iliark1382 <iliark82@gmail.com>"]
 license = "BSD 3-Clause"
+readme = 'README.md'
 homepage = "https://github.com/iliark1382/mockango"
 repository = "https://github.com/iliark1382/mockango"
 keywords = [
