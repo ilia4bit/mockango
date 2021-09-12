@@ -16,6 +16,7 @@ INSTALLED_APPS = [
   ...
   'mockango',
 ]
+```
 ## usage
 ```shell
 python manage.py generatedata <app_labels> --num <instance for each model> --format <fixture_file_format> --locale <mimesis supported locale>
