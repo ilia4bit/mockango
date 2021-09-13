@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mockango"
-version = "1.0.0"
+version = "1.0.1"
 description = "django-admin fixture generator command"
 authors = ["iliark1382 <iliark82@gmail.com>"]
 license = "BSD 3-Clause"
@@ -22,7 +22,7 @@ keywords = [
 python = "^3.6"
 
 [tool.poetry.dev-dependencies]
-Django = "^2.2"
+Django = "^3.1"
 mimesis = "^4.1.3"
 colorama = "^0.4.4"
 PyYAML = "^5.4.1"

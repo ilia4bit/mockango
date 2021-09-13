@@ -3,7 +3,7 @@ from django.core.management.base import AppCommand
 from django.apps import AppConfig
 from mimesis.locales import LIST_OF_LOCALES
 from colorama import Fore
-from mockango.core.fixture import Fixture
+from mockango.main.fixture import Fixture
 
 
 class Command(AppCommand):
