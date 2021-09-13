@@ -125,6 +125,6 @@ posts/fixture/post/fixture_file.yaml
   pk: 5
 ```
 ## If You Find It Useful
-Hi my friend if you find mockango useful please give it one star or share with your friends.
-I think it can be imporve it so if you find something missing make issue
-**Thanks**
+give it one star, make issue if you find something missing, share with your friends
+
+**Thanks :)**
