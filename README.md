@@ -1,5 +1,5 @@
-# mockango
-django-admin commands which generate fixture data for your given apps's models using Mimesis data generator
+# Mockango
+for short mockango is django fixture generator command which help you have data without pain for test development
 ## requirements
 ```shell
 pip install django
