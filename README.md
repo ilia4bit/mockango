@@ -1,5 +1,5 @@
 # Mockango
-for short mockango is django fixture generator command which help you have data without pain for test development
+django-admin fixtures(initial data) generator command
 ## requirements
 ```shell
 pip install django
